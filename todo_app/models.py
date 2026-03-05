@@ -22,4 +22,6 @@ class Task(models.Model):
     tags = models.ManyToManyField(
         Tag,
         related_name="tasks",
+        null=True,
+        blank=True,
     )

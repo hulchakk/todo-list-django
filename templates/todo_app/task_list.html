@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>TODO list <a href="" class="btn btn-primary" style="float: right">Add task</a></h1>
+  <h1>TODO list <a href="{% url 'todo_app:task-create' %}" class="btn btn-primary" style="float: right">Add task</a></h1>
+  <br>
+  <br>
   {% for task in task_list %}
     <span>
         <h3>
+          <strong>
             {{ task.content }} 
             {% if task.is_done %}
                 <span style="color: green">Done</span>
@@ -13,16 +16,17 @@
                     <span style="color: red">Not done</span>
                     <a href="" class="btn btn-success">Complete</a>
             {% endif %}
+          </strong>
         </h3>
         <p>
           Created: {{ task.datetime }}. 
           {% if task.deadline %}
-            <span style="color: red"> Deadline: {{ tast.deadline}} </span>
+            <span style="color: red"> Deadline: {{ task.deadline}} </span>
           {% endif %}
         </p>
         <p>
           Tags: 
-          {% for tag in task.tags %}
+          {% for tag in task.tags.all %}
             {{ tag.name }} 
           {% endfor %}
           <a href="">Update</a> 
