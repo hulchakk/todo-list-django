@@ -6,6 +6,9 @@ class Tag(models.Model):
         max_length=255,
     )
 
+    def __str__(self):
+        return self.name
+
 
 class Task(models.Model):
     content = models.TextField()
