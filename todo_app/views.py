@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.views import generic
 
-# Create your views here.
+from todo_app.models import (
+    Task,
+    Tag,
+)
+
+
+class TaskListView(generic.ListView):
+    model = Task
