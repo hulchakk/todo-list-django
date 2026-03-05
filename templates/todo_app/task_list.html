@@ -11,10 +11,10 @@
             {{ task.content }} 
             {% if task.is_done %}
                 <span style="color: green">Done</span>
-                <a href="" class="btn btn-secondary">Undo</a>
+                <a href="{% url 'todo_app:task-change-status' pk=task.pk %}" class="btn btn-secondary">Undo</a>
                 {% else %}
                     <span style="color: red">Not done</span>
-                    <a href="" class="btn btn-success">Complete</a>
+                    <a href="{% url 'todo_app:task-change-status' pk=task.pk %}" class="btn btn-success">Complete</a>
             {% endif %}
           </strong>
         </h3>
