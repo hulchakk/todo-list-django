@@ -5,7 +5,7 @@ from todo_app.views import (
     TaskCreateView,
     TaskUpdateView,
     TaskDeleteView,
-    task_change_status,
+    TaskChangeStatus,
     TagListView,
     TagCreateView,
     TagUpdateView,
@@ -18,7 +18,7 @@ urlpatterns = [
     path("tasks/create/", TaskCreateView.as_view(), name="task-create"),
     path(
         "tasks/<int:pk>/change_status/",
-        task_change_status,
+        TaskChangeStatus.as_view(),
         name="task-change-status"
     ),
     path(

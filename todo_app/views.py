@@ -10,13 +10,13 @@ from todo_app.models import (
 )
 
 
-def task_change_status(request: HttpRequest, pk: int) -> HttpResponse:
-    task = Task.objects.get(pk=pk)
-    task.is_done = not task.is_done
+class TaskChangeStatus(generic.View):
+    def get(self, request: HttpRequest, pk) -> HttpResponse:
+        task = Task.objects.get(pk=pk)
+        task.is_done = not task.is_done
+        task.save()
 
-    task.save()
-
-    return redirect("todo_app:todo-list")
+        return redirect("todo_app:todo-list")
 
 
 class TaskListView(generic.ListView):
